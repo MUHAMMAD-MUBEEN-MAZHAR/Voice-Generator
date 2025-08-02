@@ -3,8 +3,9 @@
 /* Tablet and Small Laptops */
 @media (max-width: 1024px) {
     .main h1 {
-        font-size: 40px;
-        margin-top: 30px;
+        font-size: 50px;
+        /* margin-top: 30px; */
+        text-align: center;
     }
 
     textarea {
@@ -14,13 +15,14 @@
 
     .row {
         width: 90%;
-        flex-direction: row;
+        flex-direction: column;
         flex-wrap: wrap;
     }
 
     select,
     button {
         /* flex: 1 1 45%; */
+        width: 50%;
     }
 }
 
@@ -29,11 +31,15 @@
     .main h1 {
         font-size: 50px;
         margin-top: -30px;
+        justify-items: center;
+        width: 90%;
     }
 
     textarea {
-        height: 180px;
+        width: 80%;
+        height: 150px;
         font-size: 16px;
+        justify-content: center;
     }
 
     .row {
@@ -44,7 +50,7 @@
 
     select,
     button {
-        width: 100%;
+        width: 80%;
         flex-direction: column;
     }
 }
@@ -52,7 +58,7 @@
 /* Extra Small Devices (Phones) */
 @media (max-width: 480px) {
     .main h1 {
-        font-size: 30px;
+        font-size: 35px;
     }
 
     textarea {
