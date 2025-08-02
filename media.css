@@ -1,0 +1,72 @@
+/* Media Queries for Responsiveness */
+
+/* Tablet and Small Laptops */
+@media (max-width: 1024px) {
+    .main h1 {
+        font-size: 40px;
+        margin-top: 30px;
+    }
+
+    textarea {
+        height: 200px;
+        font-size: 16px;
+    }
+
+    .row {
+        width: 90%;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    select,
+    button {
+        /* flex: 1 1 45%; */
+    }
+}
+
+/* Mobile Devices */
+@media (max-width: 768px) {
+    .main h1 {
+        font-size: 50px;
+        margin-top: -30px;
+    }
+
+    textarea {
+        height: 180px;
+        font-size: 16px;
+    }
+
+    .row {
+        flex-direction: column;
+        width: 100%;
+        gap: 15px;
+    }
+
+    select,
+    button {
+        width: 100%;
+        flex-direction: column;
+    }
+}
+
+/* Extra Small Devices (Phones) */
+@media (max-width: 480px) {
+    .main h1 {
+        font-size: 30px;
+    }
+
+    textarea {
+        height: 150px;
+        font-size: 14px;
+    }
+
+    button {
+        font-size: 16px;
+        padding: 10px 20px;
+    }
+
+    select {
+        font-size: 16px;
+        padding: 10px 15px;
+    }
+}
