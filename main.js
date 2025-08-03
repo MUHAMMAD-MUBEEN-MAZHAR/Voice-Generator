@@ -2,16 +2,21 @@ let speech = new SpeechSynthesisUtterance();
 let voices = [];
 let voiceSelect = document.querySelector("select");
 
+// Function to load & filter voices
 function populateVoices() {
     voices = window.speechSynthesis.getVoices();
 
     if (voices.length === 0) {
-        // Retry after slight delay if voices aren't loaded yet
+        // Retry if voices not loaded yet (common in mobile)
         setTimeout(populateVoices, 100);
         return;
     }
 
-    voiceSelect.innerHTML = ""; // Clear old options
+    //  FILTER: Show only English voices (you can customize this filter)
+    voices = voices.filter(voice => voice.lang.startsWith('en'));
+
+    voiceSelect.innerHTML = ""; // Clear dropdown first
+
     voices.forEach((voice, i) => {
         let option = document.createElement("option");
         option.value = i;
@@ -19,13 +24,17 @@ function populateVoices() {
         voiceSelect.appendChild(option);
     });
 
-    speech.voice = voices[0]; // Default voice
+    // Set default voice
+    speech.voice = voices[0];
+
+    // Debug log (optional): Check voices on mobile
+    console.log("Available voices:", voices);
 }
 
-// Trigger voices load
+// Load voices initially
 populateVoices();
 
-// Some browsers fire voiceschanged
+// Also reload if browser supports voiceschanged event
 window.speechSynthesis.onvoiceschanged = populateVoices;
 
 // Change voice on selection
@@ -33,7 +42,7 @@ voiceSelect.addEventListener("change", () => {
     speech.voice = voices[voiceSelect.value];
 });
 
-// Button click to speak
+// Speak the entered text
 document.querySelector("button").addEventListener("click", () => {
     speech.text = document.querySelector("textarea").value;
     window.speechSynthesis.speak(speech);
